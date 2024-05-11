@@ -1,6 +1,8 @@
 name: Build and Deploy to Netlify
 on:
   push:
+    branches:
+      - master
   pull_request:
 jobs:
   build:
@@ -21,6 +23,7 @@ jobs:
 
       - name: Deploy to Netlify
         uses: nwtgck/actions-netlify@v3.0
+        if: ${{ inputs.deploy-netlify }}
         with:
           publish-dir: './dist'
           production-branch: master
