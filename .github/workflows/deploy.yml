@@ -19,7 +19,11 @@ jobs:
       - name: Install deps
         run: npm ci
 
-      # ( Build to ./dist or other directory... )
+      - name: Run unit tests
+        run: npm run test
+
+      - name: Build app
+        run: npm run build
 
       - name: Deploy to Netlify
         uses: nwtgck/actions-netlify@v3.0
