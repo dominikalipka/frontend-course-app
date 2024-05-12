@@ -3,6 +3,13 @@ on:
   push:
     branches:
       - master
+  workflow_dispatch:
+    inputs:
+      deploy-netlify:
+        type: boolean
+        description: Enable Netlify deployment
+        default: true
+
   pull_request:
 jobs:
   build:
