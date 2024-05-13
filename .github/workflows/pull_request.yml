@@ -2,6 +2,8 @@ name: Pull Request Workflow
 
 on:
   pull_request:
+    branches:
+      - master
 
 jobs:
   verify-pr:
@@ -10,13 +12,8 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version-file: '.nvmrc'
-
-      - name: Install deps
-        run: npm ci
+      - name: Configure node
+        uses: ./.github/actions/setup-project
 
       - name: Lint code
         run: npm run lint
